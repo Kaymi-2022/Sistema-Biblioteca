@@ -1,0 +1,94 @@
+name: Sistema Biblioteca - SonarCloud
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+
+  sonar:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      # ===== EUREKA =====
+
+      - name: Eureka Build
+        working-directory: eureka-server
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=TU_PROJECT_KEY_EUREKA \
+          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+
+      # ===== API GATEWAY =====
+
+      - name: Gateway Build
+        working-directory: api-gateway
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=TU_PROJECT_KEY_GATEWAY \
+          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+
+      # ===== AUTH =====
+
+      - name: Auth Build
+        working-directory: auth-service
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=TU_PROJECT_KEY_AUTH \
+          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+
+      # ===== LIBROS =====
+
+      - name: Libros Build
+        working-directory: libros-service
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=TU_PROJECT_KEY_LIBROS \
+          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+
+      # ===== PRESTAMOS =====
+
+      - name: Prestamos Build
+        working-directory: prestamos-service
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=TU_PROJECT_KEY_PRESTAMOS \
+          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+
+      # ===== NOTIFICACIONES =====
+
+      - name: Notificaciones Build
+        working-directory: notificaciones-service
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=TU_PROJECT_KEY_NOTIFICACIONES \
+          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
