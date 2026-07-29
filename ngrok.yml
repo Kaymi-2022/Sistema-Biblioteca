@@ -1,5 +1,0 @@
-version: "2"
-tunnels:
-  sonarqube:
-    proto: http
-    addr: sonar:9000
