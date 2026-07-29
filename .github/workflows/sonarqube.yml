@@ -2,93 +2,53 @@ name: Sistema Biblioteca - SonarCloud
 
 on:
   push:
-    branches:
-      - main
-      - master
-      - develop
-
-  pull_request:
-    branches:
-      - main
-      - master
-      - develop
+    branches: [ main, master, develop ]
 
 jobs:
-
   sonar:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v5
 
-      - name: Configurar Java 21
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: 21
+          java-version: '21'
           cache: maven
 
-      # ===== EUREKA =====
-
-      - name: Eureka Build
+      - name: Analizar Eureka
         working-directory: eureka-server
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=kaymi-2026_eureka-server \
-          -Dsonar.organization=kaymi-2026 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=TU_PROJECT_KEY_REAL \
+            -Dsonar.organization=kaymi-2026 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
-      # ===== API GATEWAY =====
-
-      - name: Gateway Build
+      - name: Analizar Gateway
         working-directory: api-gateway
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=kaymi-2026_api-gateway \
-          -Dsonar.organization=kaymi-2026 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify
 
-      # ===== AUTH =====
-
-      - name: Auth Build
+      - name: Analizar Auth
         working-directory: auth-service
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=kaymi-2026_auth-service \
-          -Dsonar.organization=kaymi-2026 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify
 
-      # ===== LIBROS =====
-
-      - name: Libros Build
+      - name: Analizar Libros
         working-directory: libros-service
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=kaymi-2026_libros-service \
-          -Dsonar.organization=kaymi-2026 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify
 
-      # ===== PRESTAMOS =====
-
-      - name: Prestamos Build
+      - name: Analizar Prestamos
         working-directory: prestamos-service
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=kaymi-2026_prestamos-service \
-          -Dsonar.organization=kaymi-2026 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify
 
-      # ===== NOTIFICACIONES =====
-
-      - name: Notificaciones Build
+      - name: Analizar Notificaciones
         working-directory: notificaciones-service
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=kaymi-2026_notificaciones-service \
-          -Dsonar.organization=kaymi-2026 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify
