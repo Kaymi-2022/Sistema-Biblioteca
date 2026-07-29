@@ -38,8 +38,8 @@ jobs:
       - name: Eureka Build
         working-directory: eureka-server
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=TU_PROJECT_KEY_EUREKA \
-          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.projectKey=kaymi-2026_eureka-server \
+          -Dsonar.organization=kaymi-2026 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
@@ -48,8 +48,8 @@ jobs:
       - name: Gateway Build
         working-directory: api-gateway
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=TU_PROJECT_KEY_GATEWAY \
-          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.projectKey=kaymi-2026_api-gateway \
+          -Dsonar.organization=kaymi-2026 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
@@ -58,8 +58,8 @@ jobs:
       - name: Auth Build
         working-directory: auth-service
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=TU_PROJECT_KEY_AUTH \
-          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.projectKey=kaymi-2026_auth-service \
+          -Dsonar.organization=kaymi-2026 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
@@ -68,8 +68,8 @@ jobs:
       - name: Libros Build
         working-directory: libros-service
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=TU_PROJECT_KEY_LIBROS \
-          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.projectKey=kaymi-2026_libros-service \
+          -Dsonar.organization=kaymi-2026 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
@@ -78,8 +78,8 @@ jobs:
       - name: Prestamos Build
         working-directory: prestamos-service
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=TU_PROJECT_KEY_PRESTAMOS \
-          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.projectKey=kaymi-2026_prestamos-service \
+          -Dsonar.organization=kaymi-2026 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
@@ -88,7 +88,7 @@ jobs:
       - name: Notificaciones Build
         working-directory: notificaciones-service
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=TU_PROJECT_KEY_NOTIFICACIONES \
-          -Dsonar.organization=TU_ORGANIZATION \
+          -Dsonar.projectKey=kaymi-2026_notificaciones-service \
+          -Dsonar.organization=kaymi-2026 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
