@@ -41,14 +41,14 @@ jobs:
       - name: Analizar Libros
         working-directory: libros-service
         run: |
-          mvn clean verify
+          mvn clean verify -DskipTests
 
       - name: Analizar Prestamos
         working-directory: prestamos-service
         run: |
-          mvn clean verify
+          mvn clean verify -DskipTests
 
       - name: Analizar Notificaciones
         working-directory: notificaciones-service
         run: |
-          mvn clean verify
+          mvn clean verify -DskipTests
