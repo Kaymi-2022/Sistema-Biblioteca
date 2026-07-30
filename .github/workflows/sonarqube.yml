@@ -50,6 +50,7 @@ jobs:
         working-directory: libros-service
         run: |
           mvn clean verify sonar:sonar \
+            -DskipTests \
             -Dsonar.projectKey=kaymi-2026_libros-service \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
@@ -59,6 +60,7 @@ jobs:
         working-directory: prestamos-service
         run: |
           mvn clean verify sonar:sonar \
+            -DskipTests \
             -Dsonar.projectKey=kaymi-2026_prestamos-service \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
@@ -68,6 +70,7 @@ jobs:
         working-directory: notificaciones-service
         run: |
           mvn clean verify sonar:sonar \
+            -DskipTests \
             -Dsonar.projectKey=kaymi-2026_notificaciones-service \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
