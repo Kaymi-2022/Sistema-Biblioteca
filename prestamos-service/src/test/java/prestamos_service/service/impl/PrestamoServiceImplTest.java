@@ -26,8 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@ActiveProfiles("test")
+@ExtendWith(MockitoExtension.class)
 class PrestamoServiceImplTest {
 
 
@@ -60,8 +59,6 @@ class PrestamoServiceImplTest {
 
     @BeforeEach
     void setUp(){
-
-        MockitoAnnotations.openMocks(this);
 
         prestamo = new Prestamo();
         prestamo.setCodigoPrestamo("PRE001");
