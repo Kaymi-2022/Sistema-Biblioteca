@@ -23,7 +23,7 @@ jobs:
         working-directory: eureka-server
         run: |
           mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=TU_PROJECT_KEY_REAL \
+            -Dsonar.projectKey=eureka-server \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
@@ -31,24 +31,45 @@ jobs:
       - name: Analizar Gateway
         working-directory: api-gateway
         run: |
-          mvn clean verify
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=api-gateway \
+            -Dsonar.organization=kaymi-2026 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
       - name: Analizar Auth
         working-directory: auth-service
         run: |
-          mvn clean verify
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=auth-service \
+            -Dsonar.organization=kaymi-2026 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
       - name: Analizar Libros
         working-directory: libros-service
         run: |
-          mvn clean verify -DskipTests
+          mvn clean verify -DskipTests sonar:sonar \
+            -Dsonar.projectKey=libros-service \
+            -Dsonar.organization=kaymi-2026 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} 
 
       - name: Analizar Prestamos
         working-directory: prestamos-service
         run: |
-          mvn clean verify -DskipTests
+          mvn clean verify -DskipTests sonar:sonar \
+            -Dsonar.projectKey=prestamos-service \
+            -Dsonar.organization=kaymi-2026 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} 
+
 
       - name: Analizar Notificaciones
         working-directory: notificaciones-service
         run: |
-          mvn clean verify -DskipTests
+          mvn clean verify -DskipTests sonar:sonar \
+            -Dsonar.projectKey=notificaciones-service \
+            -Dsonar.organization=kaymi-2026 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
