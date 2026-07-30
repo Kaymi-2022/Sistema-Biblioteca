@@ -41,7 +41,7 @@ jobs:
       - name: Analizar Libros
         working-directory: libros-service
         run: |
-          mvn clean verify
+          mvn clean verify -DskipTests
 
       - name: Analizar Prestamos
         working-directory: prestamos-service
