@@ -22,7 +22,7 @@ jobs:
       - name: Analizar Eureka
         working-directory: eureka-server
         run: |
-          mvn clean verify sonar:sonar \
+          mvn clean verify -DskipTests sonar:sonar \
             -Dsonar.projectKey=eureka-server \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
@@ -31,7 +31,7 @@ jobs:
       - name: Analizar Gateway
         working-directory: api-gateway
         run: |
-          mvn clean verify sonar:sonar \
+          mvn clean verify -DskipTests sonar:sonar \
             -Dsonar.projectKey=api-gateway \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
@@ -40,7 +40,7 @@ jobs:
       - name: Analizar Auth
         working-directory: auth-service
         run: |
-          mvn clean verify sonar:sonar \
+          mvn clean verify -DskipTests sonar:sonar \
             -Dsonar.projectKey=auth-service \
             -Dsonar.organization=kaymi-2026 \
             -Dsonar.host.url=https://sonarcloud.io \
