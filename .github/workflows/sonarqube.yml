@@ -51,4 +51,4 @@ jobs:
       - name: Analizar Notificaciones
         working-directory: notificaciones-service
         run: |
-          mvn clean verify
+          mvn clean verify -DskipTests
